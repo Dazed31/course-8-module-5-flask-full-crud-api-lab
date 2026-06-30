@@ -18,6 +18,11 @@ events = [
 ]
 
 
+def find_event(event_id):
+    """Helper to locate an event by id. Returns the Event or None."""
+    return next((e for e in events if e.id == event_id), None)
+
+
 @app.route("/")
 def welcome():
     return jsonify({"message": "Welcome to the Event Management API"})
