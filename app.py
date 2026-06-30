@@ -23,6 +23,11 @@ def welcome():
     return jsonify({"message": "Welcome to the Event Management API"})
 
 
+@app.route("/events", methods=["GET"])
+def get_events():
+    return jsonify([e.to_dict() for e in events])
+
+
 # TODO: Task 1 - Define the Problem
 # Create a new event from JSON input
 @app.route("/events", methods=["POST"])
