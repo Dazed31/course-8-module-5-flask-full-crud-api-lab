@@ -33,14 +33,21 @@ def get_events():
     return jsonify([e.to_dict() for e in events])
 
 
-# TODO: Task 1 - Define the Problem
 # Create a new event from JSON input
 @app.route("/events", methods=["POST"])
 def create_event():
-    # TODO: Task 2 - Design and Develop the Code
-    # TODO: Task 3 - Implement the Loop and Process Each Element
-    # TODO: Task 4 - Return and Handle Results
-    pass
+    data = request.get_json()
+
+    # Validate required field
+    if not data or "title" not in data or not data["title"]:
+        return jsonify({"error": "Missing required field: title"}), 400
+
+    # Generate a new unique id
+    new_id = max((e.id for e in events), default=0) + 1
+    new_event = Event(new_id, data["title"])
+    events.append(new_event)
+
+    return jsonify(new_event.to_dict()), 201
 
 # TODO: Task 1 - Define the Problem
 # Update the title of an existing event
