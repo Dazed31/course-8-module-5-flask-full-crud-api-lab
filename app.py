@@ -17,14 +17,18 @@ events = [
     Event(2, "Python Workshop")
 ]
 
+
+@app.route("/")
+def welcome():
+    return jsonify({"message": "Welcome to the Event Management API"})
+
+
 # TODO: Task 1 - Define the Problem
 # Create a new event from JSON input
 @app.route("/events", methods=["POST"])
 def create_event():
     # TODO: Task 2 - Design and Develop the Code
-
     # TODO: Task 3 - Implement the Loop and Process Each Element
-
     # TODO: Task 4 - Return and Handle Results
     pass
 
@@ -33,9 +37,7 @@ def create_event():
 @app.route("/events/<int:event_id>", methods=["PATCH"])
 def update_event(event_id):
     # TODO: Task 2 - Design and Develop the Code
-
     # TODO: Task 3 - Implement the Loop and Process Each Element
-
     # TODO: Task 4 - Return and Handle Results
     pass
 
@@ -44,9 +46,7 @@ def update_event(event_id):
 @app.route("/events/<int:event_id>", methods=["DELETE"])
 def delete_event(event_id):
     # TODO: Task 2 - Design and Develop the Code
-
     # TODO: Task 3 - Implement the Loop and Process Each Element
-
     # TODO: Task 4 - Return and Handle Results
     pass
 
